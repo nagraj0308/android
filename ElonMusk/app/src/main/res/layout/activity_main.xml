@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="100dp"
+            android:background="#2cff13"
+            android:paddingTop="18dp"
+            android:text="Elon Musk"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="30dp"
+            android:background="#2cff13"
+            android:src="@drawable/elonmusk" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFB6C1"
+            android:text="Musk was born on June 28, 1971, in Pretoria, Transvaal, South Africa the son of Maye Musk (née Haldeman), a model and dietitian from Regina, Saskatchewan, Canada and Errol Musk, a South African electromechanical engineer, pilot, and sailor."
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+</ScrollView>

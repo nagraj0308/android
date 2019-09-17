@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ViewXML</string>
+
+    <string-array name="citynames">
+        <item>Delhi</item>
+        <item>Mumbai</item>
+        <item>Kolkata</item>
+        <item>Chennai</item>
+        <item>Bangalore</item>
+        <item>Chandigarh</item>>
+    </string-array>
+</resources>

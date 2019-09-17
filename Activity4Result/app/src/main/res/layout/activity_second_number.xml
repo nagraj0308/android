@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7f525"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".SecondNumber">
+    <EditText android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/num2"
+        android:hint="Enter second Number"
+        android:textSize="30sp"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        />
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter2"
+        android:text="Enter"
+        android:layout_marginTop="30dp"
+        />
+
+
+
+
+</LinearLayout>
