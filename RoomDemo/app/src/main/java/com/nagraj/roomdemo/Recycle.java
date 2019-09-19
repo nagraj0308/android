@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 public class Recycle extends RecyclerView.Adapter<Recycle.VH> {
     User[] data;
 

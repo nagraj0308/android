@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         insert = findViewById(R.id.insert);
         selectAll = findViewById(R.id.selectAll);
         delete = findViewById(R.id.delete);
