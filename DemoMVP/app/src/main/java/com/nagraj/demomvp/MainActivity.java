@@ -14,22 +14,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View {
+public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View1 {
 
     private MainActivityPresenter presenter;
-    private TextView textView;
+    private TextView nameemail;
     private ProgressBar progressBar;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.button);
 
         presenter = new MainActivityPresenter(this);
 
-        textView = findViewById(R.id.textView);
+        nameemail = findViewById(R.id.nameemail);
         EditText userName = findViewById(R.id.name);
         EditText email = findViewById(R.id.email);
         initProgressBar();
@@ -69,6 +67,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
 
     }
 
+    @Override
+    public void updateUserInfoTextView(String info) {
+        nameemail.setText(info);
+    }
+
+
     private void initProgressBar() {
         progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleSmall);
         progressBar.setIndeterminate(true);
@@ -78,18 +82,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         this.addContentView(progressBar, params);
         showProgressBar();
     }
-
-    @Override
-    public void updateUserInfoTextView(String info) {
-        textView.setText(info);
-    }
-
-    @Override
     public void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
+        progressBar.setVisibility(View.VISIBLE);}
 
-    @Override
     public void hideProgressBar() {
         progressBar.setVisibility(View.INVISIBLE);
     }

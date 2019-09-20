@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nameemail"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:gravity="center"
@@ -20,10 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Name"
         android:gravity="center"
-        android:background="#654321"
-        android:text=""
+        android:text="nagendra"
         />
     <EditText
         android:id="@+id/email"
@@ -31,19 +29,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="20dp"
-        android:hint="Email"
-        android:background="#654321"
-        android:text=""
+        android:text="nagraj"
         />
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#456789"
-        android:text="OK"
-        />
+
 
 
 </LinearLayout>
