@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     NavigationView navigationView;
+    MenuItem first,second,third;
+    CompoundButton cbfirst,cbsecond,cbthird;
 
 
    // private  nvDrawer;
@@ -31,20 +35,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigationView=findViewById(R.id.nvView);
-
+        mDrawer = findViewById(R.id.drawer_layout);
         // Set a Toolbar to replace the ActionBar.
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // This will display an Up icon (<-), we will replace it with hamburger later
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        first = navigationView.getMenu().findItem(R.id.first);
+        cbfirst = (CompoundButton) first.getActionView();
+        second = navigationView.getMenu().findItem(R.id.second);
+        cbsecond = (CompoundButton) second.getActionView();
+        third = navigationView.getMenu().findItem(R.id.third);
+        cbthird = (CompoundButton) third.getActionView();
+
 
         // Find our drawer view
-        mDrawer = findViewById(R.id.drawer_layout);
+
         drawerToggle = setupDrawerToggle();
         setupDrawerContent(navigationView);
-
         drawerToggle.setDrawerIndicatorEnabled(true);
         drawerToggle.syncState();
 
@@ -53,12 +62,9 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.addDrawerListener(drawerToggle);
 
 
+        itemChecked();
 
     }
-
-
-
-
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -70,39 +76,23 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
     public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass;
         switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
-               // fragmentClass = FirstFragment.class;
+            case R.id.first:
+                Toast.makeText(getApplicationContext(),"First",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_second_fragment:
-               // fragmentClass = SecondFragment.class;
+            case R.id.second:
+                Toast.makeText(getApplicationContext(),"Second",Toast.LENGTH_SHORT).show();
+
                 break;
-            case R.id.nav_third_fragment:
-               // fragmentClass = ThirdFragment.class;
+            case R.id.third:
+                Toast.makeText(getApplicationContext(),"Third",Toast.LENGTH_SHORT).show();
                 break;
             default:
-               // fragmentClass = FirstFragment.class;
+                Toast.makeText(getApplicationContext(),"Default",Toast.LENGTH_SHORT).show();
         }
-
-        try {
-           // fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-        // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
-        // Set action bar title
         setTitle(menuItem.getTitle());
-        // Close the navigation drawer
-        mDrawer.closeDrawers();
+       // mDrawer.closeDrawers();
     }
     private ActionBarDrawerToggle setupDrawerToggle() {
         // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
@@ -124,24 +114,33 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+    public void itemChecked(){
+        cbfirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
+                Toast.makeText(getApplicationContext(),"I"+b,Toast.LENGTH_SHORT).show();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        if (drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
+            }
+        });
+        cbsecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
-        }
+                Toast.makeText(getApplicationContext(),"II"+b,Toast.LENGTH_SHORT).show();
 
-        return super.onOptionsItemSelected(item);
+            }
+        });
+        cbthird.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                Toast.makeText(getApplicationContext(),"III"+b,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
-
 
 }
 
