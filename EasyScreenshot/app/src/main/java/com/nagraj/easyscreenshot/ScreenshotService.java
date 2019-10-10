@@ -1,6 +1,10 @@
 package com.nagraj.easyscreenshot;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +15,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
@@ -29,6 +34,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -61,6 +67,24 @@ public class ScreenshotService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        String string ="Hellow";
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                0, notificationIntent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "exampleServiceChannel")
+                .setContentTitle("Foreground Service")
+                .setContentText(string)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentIntent(pendingIntent)
+                .build();
+
+        startForeground(1, notification);
+
+
+
+
+
         Toast.makeText(this,"Proximity based Screenshot service is Started",Toast.LENGTH_LONG).show();
 
         context=getApplicationContext();
@@ -72,7 +96,8 @@ public class ScreenshotService extends Service {
         } else {
             mySensorManager.registerListener(proximitiSensorsEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
-        return super.onStartCommand(intent, flags, startId);
+        //return super.onStartCommand(intent, flags, startId);
+        return START_NOT_STICKY;
     }
 
     SensorEventListener proximitiSensorsEventListener = new SensorEventListener() {
@@ -128,6 +153,7 @@ public class ScreenshotService extends Service {
         }
 
     }
+
 
 
 

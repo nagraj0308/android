@@ -14,6 +14,21 @@
         android:layout_height="wrap_content"
         android:text="Service" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="200dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:hint="Enter Text" />
+    <Switch
+        android:id="@+id/binding"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="Bind Service" />
+
 
 
 </LinearLayout>
