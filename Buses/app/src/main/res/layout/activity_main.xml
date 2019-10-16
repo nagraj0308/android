@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:id="@+id/ll1"
+        android:layout_height="@dimen/height_button"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/fare"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:text="Fare"
+            android:textStyle="italic|bold" />
+        <Button
+            android:id="@+id/deptTime"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="italic|bold"
+            android:text="Departure" />
+        <Button
+            android:id="@+id/seats"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="italic|bold"
+            android:text="Seats" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:id="@+id/recyclerView"
+        android:background="#ffffff"
+        android:scrollbars="vertical"
+        android:layout_height="match_parent"
+        />
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/gotoFilter"
+        android:layout_width="@dimen/fabw"
+        android:layout_height="@dimen/fabw"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        app:backgroundTint="@color/white"
+        app:srcCompat="@drawable/filter" />
+
+
+</RelativeLayout>

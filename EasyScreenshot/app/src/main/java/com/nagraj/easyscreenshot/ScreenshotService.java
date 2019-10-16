@@ -13,6 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.app.Activity.RESULT_OK;
 
 public class ScreenshotService extends Service {
     Context context;
@@ -67,28 +70,22 @@ public class ScreenshotService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        String string ="Hellow";
         Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                0, notificationIntent, 0);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
-        Notification notification = new NotificationCompat.Builder(this, "exampleServiceChannel")
-                .setContentTitle("Foreground Service")
-                .setContentText(string)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentIntent(pendingIntent)
-                .build();
+        Notification notification =
+                new NotificationCompat.Builder(this, "Channel ID")
+                        .setContentTitle("Started")
+                        .setContentText("Proximity based Screenshot service is Started")
+                        .setSmallIcon(R.drawable.screenshot)
+                        .setContentIntent(pendingIntent)
+                        .setTicker("Ticker Text")
+                        .build();
 
-        startForeground(1, notification);
-
-
-
-
-
-        Toast.makeText(this,"Proximity based Screenshot service is Started",Toast.LENGTH_LONG).show();
+        startForeground(2, notification);
 
         context=getApplicationContext();
-
         mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         myProximitySensor = mySensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         if (myProximitySensor == null) {
@@ -96,8 +93,7 @@ public class ScreenshotService extends Service {
         } else {
             mySensorManager.registerListener(proximitiSensorsEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
-        //return super.onStartCommand(intent, flags, startId);
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     SensorEventListener proximitiSensorsEventListener = new SensorEventListener() {
@@ -112,12 +108,16 @@ public class ScreenshotService extends Service {
             if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
                 if(event.values[0]==0){
                     try {
-                       //View v1 = view.getRootView();
+
+
+
+
+                        // view=getWindow().getDecorView().getRootView();
                         long cur=System.currentTimeMillis();
                         Toast.makeText(getApplicationContext(),cur+"",Toast.LENGTH_LONG).show();
 
-                       // Bitmap sc = getScreenShot(v1);
-                       // savePic(sc, uri + "IMG_" + cur + ".png");
+                       Bitmap sc = getScreenShot(view);
+                       savePic(sc, uri + "IMG_" + cur + ".png");
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -153,6 +153,10 @@ public class ScreenshotService extends Service {
         }
 
     }
+
+
+
+
 
 
 
