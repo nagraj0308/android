@@ -1,9 +1,5 @@
 package com.example.draggerdemo;
 
-import javax.inject.Inject;
-
-class Engine {
-    @Inject Engine(){
-
-    }
+public interface Engine {
+    void start();
 }
