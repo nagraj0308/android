@@ -16,4 +16,10 @@ class Car {
     void driveCar(TextView textView){
         textView.setText("Car is driving....");
     }
+    void startCar(TextView textView){
+        textView.setText("Car is starting....");
+    }
+    @Inject public void enableRemote(Remote remote){
+        remote.setStarter(this);
+    }
 }

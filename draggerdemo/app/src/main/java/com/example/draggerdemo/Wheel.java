@@ -1,10 +1,9 @@
 package com.example.draggerdemo;
-
-import javax.inject.Inject;
-
 class Wheel {
-   @Inject
-   Wheel(){
-
+   private Rims rims;
+   private Tires tires;
+   Wheel(Rims rims,Tires tires){
+        this.rims=rims;
+        this.tires=tires;
     }
 }
