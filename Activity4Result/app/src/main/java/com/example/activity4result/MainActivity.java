@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     Button button1,button2,button3;
     int num1,num2,sum;
 
+    private static final String MESSAGE="message";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK) {
             if (requestCode==2) {
-                String message = data.getStringExtra("message");
+                String message = data.getStringExtra(MESSAGE);
                 button1.setText(message);
                 num1 = Integer.parseInt(message);
             }
             if (requestCode==4) {
-                String message = data.getStringExtra("message");
+                String message = data.getStringExtra(MESSAGE);
                 button2.setText(message);
                 num2 = Integer.parseInt(message);
             }
