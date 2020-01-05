@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),FirstNumber.class);
-                startActivityForResult(i, 3);
+                startActivityForResult(i, 2);
 
             }
         });
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),SecondNumber.class);
-                startActivityForResult(i, 2);
+                startActivityForResult(i, 4);
 
             }
         });
@@ -46,17 +46,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==3&&resultCode==RESULT_OK)
-        {
-            String message=data.getStringExtra("message");
-            button1.setText(message);
-            num1=Integer.parseInt(message);
-        }
-        if(requestCode==2)
-        {
-            String message=data.getStringExtra("message");
-            button2.setText(message);
-            num2=Integer.parseInt(message);
+        if(resultCode==RESULT_OK) {
+            if (requestCode==2) {
+                String message = data.getStringExtra("message");
+                button1.setText(message);
+                num1 = Integer.parseInt(message);
+            }
+            if (requestCode==4) {
+                String message = data.getStringExtra("message");
+                button2.setText(message);
+                num2 = Integer.parseInt(message);
+            }
         }
     }
 }
