@@ -1,2 +1,2 @@
-include ':app'
+include ':local',':buildSrc', ':server'
 rootProject.name='SQLBrightChatBot'

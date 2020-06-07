@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button insert, selectAll, delete, selectById, selectByName;
     EditText firstName, lastName, id, age;
     RecyclerView recyclerView;
-    User[] users = null;
+    List<User> users;
 
     public static UserDatabase userDatabase;
 
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     user1.setLastName(lastName.getText().toString());
                     user1.setUid(Integer.parseInt(id.getText().toString()));
                     user1.setAge(Integer.parseInt(age.getText().toString()));
-                    MainActivity.userDatabase.userDao().insertAll(user1);
+                    userDatabase.userDao().insertAll(user1);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Not Inserted", Toast.LENGTH_LONG).show();
 
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    MainActivity.userDatabase.userDao().delete(Integer.parseInt(id.getText().toString()));
+                    userDatabase.userDao().delete(Integer.parseInt(id.getText().toString()));
                     reload();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Not Deleted", Toast.LENGTH_LONG);
@@ -104,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    List<User> user1 = MainActivity.userDatabase.userDao().findByName(firstName.getText().toString(), lastName.getText().toString());
-                    User[] user2 = user1.toArray(new User[user1.size()]);
-                    recyclerView.setAdapter(new Recycle(user2));
+                    List<User> users = userDatabase.userDao().findByName(firstName.getText().toString(), lastName.getText().toString());
+                    recyclerView.setAdapter(new Recycle(users));
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Not Inserted", Toast.LENGTH_LONG).show();
 
@@ -125,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     List<User> user1 = MainActivity.userDatabase.userDao().loadAllByIds(Integer.parseInt(id.getText().toString()));
-                    User[] user2 = user1.toArray(new User[user1.size()]);
-                    recyclerView.setAdapter(new Recycle(user2));
+                    recyclerView.setAdapter(new Recycle(user1));
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Not Inserted", Toast.LENGTH_LONG).show();
@@ -139,10 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
     public void reload() {
-        List<User> user = MainActivity.userDatabase.userDao().getAll();
-        users = user.toArray(new User[user.size()]);
+        List<User> users = MainActivity.userDatabase.userDao().getAll();
         recyclerView.setAdapter(new Recycle(users));
     }
 

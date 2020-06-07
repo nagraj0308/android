@@ -7,11 +7,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Recycle extends RecyclerView.Adapter<Recycle.VH> {
-    User[] data;
+import java.util.List;
 
-    public Recycle(User[] listdata) {
-        this.data = listdata;
+public class Recycle extends RecyclerView.Adapter<Recycle.VH> {
+    List<User> users;
+
+    public Recycle(List<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -23,24 +25,25 @@ public class Recycle extends RecyclerView.Adapter<Recycle.VH> {
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        String title = data[position].getFirstName() + " " + data[position].getLastName() + " " + data[position].getUid();
-        holder.fullNameId.setText(title);
-        holder.age.setText("" + data[position].getAge());
+        holder.fullNameId.setText(users.get(position).getFirstName() + " " +users.get(position).getLastName());
+        holder.age.setText(String.valueOf(users.get(position).getAge()));
+        holder.tvId.setText(String.valueOf(users.get(position).getUid()));
     }
 
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return users.size();
     }
 
     public class VH extends RecyclerView.ViewHolder {
-        public TextView fullNameId, age;
+        public TextView fullNameId, age,tvId;
 
         public VH(View itemView) {
             super(itemView);
             this.fullNameId = itemView.findViewById(R.id.fullNameId);
             this.age = itemView.findViewById(R.id.age);
+            this.tvId=itemView.findViewById(R.id.tv_id);
         }
     }
 }

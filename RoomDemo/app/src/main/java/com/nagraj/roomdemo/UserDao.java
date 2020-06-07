@@ -11,7 +11,7 @@ public interface UserDao {
     @Query("SELECT * FROM Peoples")
     List<User> getAll();
 
-    @Query("SELECT * FROM Peoples WHERE uid =:userIds")
+    @Query("SELECT * FROM Peoples WHERE user_id =:userIds")
     List<User> loadAllByIds(int userIds);
 
     @Query("SELECT * FROM Peoples WHERE first_name = :first AND " + "last_name =:last LIMIT 1")
@@ -20,6 +20,6 @@ public interface UserDao {
     @Insert
     void insertAll(User... users);
 
-    @Query("DELETE FROM Peoples WHERE uid = :userId")
+    @Query("DELETE FROM Peoples WHERE user_id = :userId")
     void delete(int userId);
 }

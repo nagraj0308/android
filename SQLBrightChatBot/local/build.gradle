@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+import com.nagraj.buildsrc.Config
+import com.nagraj.buildsrc.Libraries
+
+android {
+    compileSdkVersion Config.COMPILE_SDK
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.nagraj.sqlbrightchatbot"
+        minSdkVersion Config.MIN_SDK
+        targetSdkVersion Config.TARGET_SDK
+        versionCode Config.VERSION_CODE
+        versionName Config.VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation Libraries.RECYCLER_X
+    implementation Libraries.RX_JAVA_3
+    implementation Libraries.RX_ANDROID_3
+    implementation Libraries.GSON
+
+    implementation Libraries.DAGGER
+    annotationProcessor Libraries.DAGGER_COMPILER
+    compileOnly Libraries.AUTOVALUE_ANNOTATIONS
+    annotationProcessor Libraries.AUTOVALUE_COMPILER
+    annotationProcessor Libraries.AUTOVALUE_PARCEL_COMPILER
+    annotationProcessor Libraries.AUTOVALUE_WITH_COMPILER
+    implementation Libraries.SUPPORT_ANNOTATION
+    implementation Libraries.STREAMS
+    implementation Libraries.AUTOVALUE_CURSOR
+    implementation Libraries.AUTOVALUE_CURSOR_COMPILER
+    implementation Libraries.SQLBRITE
+
+}
