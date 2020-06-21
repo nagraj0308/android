@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     LinearLayout ll;
     EditText et;
-    TextView tv;
     Button b;
 
     @Override
@@ -20,11 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        ll = (LinearLayout) findViewById(R.id.ll);
-        et = (EditText) findViewById(R.id.et1);
-
-        b = (Button) findViewById(R.id.b);
+        ll = findViewById(R.id.ll);
+        et =findViewById(R.id.et1);
+        b = findViewById(R.id.b);
         b.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View vi) {
@@ -34,12 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public void perfrom(){
+        //ll.removeAllViews();
         int n = Integer.parseInt(et.getText().toString());
        for (int i = 1; i <= n; i++) {
-        tv= new TextView(this);
+           TextView tv= new TextView(this);
             tv.setText(i+"");
             ll.addView(tv);
         }
