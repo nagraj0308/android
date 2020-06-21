@@ -36,22 +36,20 @@ public class MainActivity extends AppCompatActivity {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+            Log.v(TAG,"Permission: "+permissions[0]+ " was "+grantResults[0]);
             //resume tasks needing this permission
         }
     }
 
     public void initAll() {
         listView = findViewById(R.id.listView1);
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
 
 
         File root = new File(Environment.getRootDirectory().getParent());
         getSupportActionBar().setTitle(root.getPath());
 
-
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
-
 
         try {
 
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Exception",e.getMessage());
         }
 
-        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(aa);
         setupListViewListener();
     }

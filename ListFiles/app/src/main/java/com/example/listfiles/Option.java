@@ -24,7 +24,7 @@ public class Option extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
         listView = findViewById(R.id.listView1);
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         opt = getIntent().getStringExtra("option");
 
 
@@ -51,7 +51,6 @@ public class Option extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String s=(String) listView.getItemAtPosition(i);
-
                 Intent j = new Intent(getApplicationContext(), Option.class);
                 j.putExtra("option",s);
                 startActivity(j);
