@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "442500922358",
+    "firebase_url": "https://myself-0308.firebaseio.com",
+    "project_id": "myself-0308",
+    "storage_bucket": "myself-0308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442500922358:android:1cf7d20080dc3d3c2325d7",
+        "android_client_info": {
+          "package_name": "com.nagraj.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442500922358-edb6gbbocmsonh80tr721shh31nuab0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe0EnQQSC8GU_8k5IQbWUoD6FAXp3TYcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442500922358-edb6gbbocmsonh80tr721shh31nuab0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442500922358:android:ff8abed8cf602ae92325d7",
+        "android_client_info": {
+          "package_name": "com.nagraj.firebaseimageupload"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442500922358-edb6gbbocmsonh80tr721shh31nuab0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe0EnQQSC8GU_8k5IQbWUoD6FAXp3TYcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442500922358-edb6gbbocmsonh80tr721shh31nuab0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
